@@ -1,0 +1,397 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+header {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #2ecc71;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stats {
+    display: flex;
+    gap: 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f0f0f0;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.stat span:first-child {
+    color: #667eea;
+}
+
+.stat span:last-child {
+    color: #2ecc71;
+    font-size: 1.3em;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.game-area {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+}
+
+.garden {
+    background: linear-gradient(180deg, #87ceeb 0%, #90ee90 100%);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    min-height: 500px;
+}
+
+.plant-slot {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px dashed #8b7355;
+    position: relative;
+}
+
+.plant-slot:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.plant-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+}
+
+.plant {
+    font-size: 6em;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+    animation: grow 0.3s ease-in-out;
+}
+
+@keyframes grow {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.plant.watered {
+    animation: water-pulse 0.5s ease-in-out;
+}
+
+@keyframes water-pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-plant {
+    background: #2ecc71;
+    color: white;
+}
+
+.btn-plant:hover {
+    background: #27ae60;
+    transform: scale(1.05);
+}
+
+.btn-water {
+    background: #3498db;
+    color: white;
+}
+
+.btn-water:hover {
+    background: #2980b9;
+    transform: scale(1.05);
+}
+
+.btn-harvest {
+    background: #f39c12;
+    color: white;
+}
+
+.btn-harvest:hover {
+    background: #d68910;
+    transform: scale(1.05);
+}
+
+.sidebar {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    max-height: 700px;
+}
+
+.sidebar h2 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.shop-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.shop-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s;
+}
+
+.shop-item:hover {
+    background: #efefef;
+    transform: translateX(5px);
+}
+
+.item-icon {
+    font-size: 2.5em;
+    min-width: 50px;
+    text-align: center;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 3px;
+}
+
+.item-price {
+    color: #f39c12;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.item-info button {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: all 0.3s;
+}
+
+.item-info button:hover {
+    background: #5568d3;
+    transform: scale(1.05);
+}
+
+.guide {
+    background: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+.guide p {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #667eea;
+}
+
+.guide ul {
+    margin-left: 15px;
+    color: #555;
+}
+
+.guide li {
+    margin-bottom: 5px;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.btn-next-day,
+.btn-reset {
+    padding: 15px 40px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-next-day {
+    background: #2ecc71;
+    color: white;
+}
+
+.btn-next-day:hover {
+    background: #27ae60;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3);
+}
+
+.btn-reset {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-reset:hover {
+    background: #c0392b;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+}
+
+footer {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .game-area {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .stats {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .garden {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    .garden {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .plant {
+        font-size: 4em;
+        height: 100px;
+        min-width: 100px;
+    }
+
+    .actions button {
+        padding: 6px 10px;
+        font-size: 0.8em;
+    }
+
+    .sidebar {
+        max-height: none;
+    }
+}
