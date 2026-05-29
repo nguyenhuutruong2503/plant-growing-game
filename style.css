@@ -118,6 +118,7 @@ body {
     font-size: 0.95em;
     font-weight: bold;
     transition: all 0.3s;
+    pointer-events: auto;
 }
 
 .shop-btn:hover {
@@ -236,6 +237,7 @@ body {
     font-weight: bold;
     font-size: 0.95em;
     transition: all 0.3s;
+    pointer-events: auto;
 }
 
 .action-btn.plant-btn {
