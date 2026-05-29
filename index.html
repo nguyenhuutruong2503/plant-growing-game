@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌱 Game Trồng Cây</title>
+    <title>🌱 Game Trồng Cây 3D</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🌱 Game Trồng Cây</h1>
+    <div id="canvas-container"></div>
+
+    <!-- UI Overlay -->
+    <div class="ui-overlay">
+        <div class="header">
+            <h1>🌱 Trang Trại 3D</h1>
             <div class="stats">
                 <div class="stat">
                     <span>⏰ Ngày:</span>
@@ -23,132 +27,56 @@
                     <span>💧 Nước:</span>
                     <span id="water">50</span>
                 </div>
+                <div class="stat">
+                    <span>❤️ Năng lực:</span>
+                    <span id="energy">100</span>
+                </div>
             </div>
-        </header>
+        </div>
 
-        <main>
-            <div class="game-area">
-                <div class="garden">
-                    <div class="plant-slot" id="plot0">
-                        <div class="plant-container">
-                            <div class="plant" id="plant0"></div>
-                            <div class="actions">
-                                <button class="btn-plant" onclick="plantSeed(0)">🌱 Trồng</button>
-                                <button class="btn-water" onclick="waterPlant(0)">💧 Tưới</button>
-                                <button class="btn-harvest" onclick="harvestPlant(0)">🌾 Thu hoạch</button>
-                            </div>
-                        </div>
-                    </div>
+        <div class="sidebar">
+            <h2>🛒 Cửa hàng</h2>
+            <div class="shop-items">
+                <button class="shop-btn" onclick="buySeed('sunflower')">🌻 Hướng dương (20💰)</button>
+                <button class="shop-btn" onclick="buySeed('tulip')">🌷 Tulip (25💰)</button>
+                <button class="shop-btn" onclick="buySeed('rose')">🌹 Hoa hồng (30💰)</button>
+                <button class="shop-btn" onclick="buySeed('carrot')">🥕 Cà rốt (15💰)</button>
+                <button class="shop-btn water-btn" onclick="buyWater()">💧 Nước (5💰 = 20L)</button>
+            </div>
 
-                    <div class="plant-slot" id="plot1">
-                        <div class="plant-container">
-                            <div class="plant" id="plant1"></div>
-                            <div class="actions">
-                                <button class="btn-plant" onclick="plantSeed(1)">🌱 Trồng</button>
-                                <button class="btn-water" onclick="waterPlant(1)">💧 Tưới</button>
-                                <button class="btn-harvest" onclick="harvestPlant(1)">🌾 Thu hoạch</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="plant-slot" id="plot2">
-                        <div class="plant-container">
-                            <div class="plant" id="plant2"></div>
-                            <div class="actions">
-                                <button class="btn-plant" onclick="plantSeed(2)">🌱 Trồng</button>
-                                <button class="btn-water" onclick="waterPlant(2)">💧 Tưới</button>
-                                <button class="btn-harvest" onclick="harvestPlant(2)">🌾 Thu hoạch</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="plant-slot" id="plot3">
-                        <div class="plant-container">
-                            <div class="plant" id="plant3"></div>
-                            <div class="actions">
-                                <button class="btn-plant" onclick="plantSeed(3)">🌱 Trồng</button>
-                                <button class="btn-water" onclick="waterPlant(3)">💧 Tưới</button>
-                                <button class="btn-harvest" onclick="harvestPlant(3)">🌾 Thu hoạch</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sidebar">
-                    <h2>🛒 Cửa hàng</h2>
-                    <div class="shop-items">
-                        <div class="shop-item">
-                            <div class="item-icon">🌻</div>
-                            <div class="item-info">
-                                <p class="item-name">Hạt hoa向日葵</p>
-                                <p class="item-price">💰 20</p>
-                                <button onclick="buySeed('sunflower')">Mua</button>
-                            </div>
-                        </div>
-
-                        <div class="shop-item">
-                            <div class="item-icon">🌷</div>
-                            <div class="item-info">
-                                <p class="item-name">Hạt Tulip</p>
-                                <p class="item-price">💰 25</p>
-                                <button onclick="buySeed('tulip')">Mua</button>
-                            </div>
-                        </div>
-
-                        <div class="shop-item">
-                            <div class="item-icon">🌹</div>
-                            <div class="item-info">
-                                <p class="item-name">Hạt Hoa Hồng</p>
-                                <p class="item-price">💰 30</p>
-                                <button onclick="buySeed('rose')">Mua</button>
-                            </div>
-                        </div>
-
-                        <div class="shop-item">
-                            <div class="item-icon">🥕</div>
-                            <div class="item-info">
-                                <p class="item-name">Hạt Cà Rốt</p>
-                                <p class="item-price">💰 15</p>
-                                <button onclick="buySeed('carrot')">Mua</button>
-                            </div>
-                        </div>
-
-                        <div class="shop-item">
-                            <div class="item-icon">💧</div>
-                            <div class="item-info">
-                                <p class="item-name">Nước (1 lít)</p>
-                                <p class="item-price">💰 5</p>
-                                <button onclick="buyWater()">Mua</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <h2 style="margin-top: 20px;">📚 Hướng dẫn</h2>
-                    <div class="guide">
-                        <p>📖 <strong>Cách chơi:</strong></p>
-                        <ul>
-                            <li>🌱 Mua hạt từ cửa hàng</li>
-                            <li>🚜 Trồng hạt vào từng luống</li>
-                            <li>💧 Tưới nước hàng ngày</li>
-                            <li>⏳ Chờ cây lớn</li>
-                            <li>🌾 Thu hoạch để kiếm tiền</li>
-                            <li>⏰ Mỗi ngày tự động cộng</li>
-                        </ul>
-                    </div>
-                </div>
+            <h2>📋 Hướng Dẫn</h2>
+            <div class="guide">
+                <p><strong>Điều khiển:</strong></p>
+                <ul>
+                    <li>🖱️ Kéo chuột quay camera</li>
+                    <li>🔍 Scroll zoom in/out</li>
+                    <li>📍 Click cây để chọn</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Hành động:</strong></p>
+                <ul>
+                    <li>🌱 W = Trồng hạt</li>
+                    <li>💧 E = Tưới nước</li>
+                    <li>🌾 R = Thu hoạch</li>
+                </ul>
             </div>
 
             <div class="controls">
                 <button class="btn-next-day" onclick="nextDay()">📅 Ngày hôm sau</button>
                 <button class="btn-reset" onclick="resetGame()">🔄 Chơi lại</button>
             </div>
-        </main>
+        </div>
 
-        <footer>
-            <p>Made with ❤️ by nguyenhuutruong2503</p>
-        </footer>
+        <div class="action-menu" id="actionMenu" style="display: none;">
+            <h3 id="selectedPlotName"></h3>
+            <button class="action-btn plant-btn" onclick="plantSeedAction()">🌱 Trồng</button>
+            <button class="action-btn water-btn" onclick="waterPlantAction()">💧 Tưới</button>
+            <button class="action-btn harvest-btn" onclick="harvestPlantAction()">🌾 Thu hoạch</button>
+            <button class="action-btn cancel-btn" onclick="closeActionMenu()">❌ Đóng</button>
+        </div>
+
+        <div class="message-log" id="messageLog"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="game-3d.js"></script>
 </body>
 </html>
