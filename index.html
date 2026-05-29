@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌱 Game Trồng Cây 3D</title>
+    <title>🌱 Game Trồng Cây 3D - Nâng Cao</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
@@ -20,6 +20,10 @@
                     <span id="day">1</span>
                 </div>
                 <div class="stat">
+                    <span>🕐 Thời gian:</span>
+                    <span id="time">06:00</span>
+                </div>
+                <div class="stat">
                     <span>💰 Tiền:</span>
                     <span id="money">100</span>
                 </div>
@@ -31,6 +35,21 @@
                     <span>❤️ Năng lực:</span>
                     <span id="energy">100</span>
                 </div>
+            </div>
+        </div>
+
+        <div class="weather-panel">
+            <div class="weather-item">
+                <span id="weather-icon">☀️</span>
+                <span id="weather-text">Trời đẹp</span>
+            </div>
+            <div class="weather-item">
+                <span>🌡️</span>
+                <span id="temperature">25°C</span>
+            </div>
+            <div class="weather-item">
+                <span>💨</span>
+                <span id="humidity">60%</span>
             </div>
         </div>
 
@@ -77,6 +96,6 @@
         <div class="message-log" id="messageLog"></div>
     </div>
 
-    <script src="game-3d.js"></script>
+    <script src="game-3d-advanced.js"></script>
 </body>
 </html>
